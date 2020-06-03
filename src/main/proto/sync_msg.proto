@@ -1,0 +1,42 @@
+// 申明版本
+syntax = 'proto3';
+
+// 设定一些选项信息
+option java_multiple_files = false;
+option java_outer_classname = "SyncMsg";
+
+package com.baidu.personal.fist.grpc;
+
+//定义服务
+service SyncService {
+
+    rpc processFileCreate(SyncRequest) returns(SyncResponse) {}
+
+    rpc processFileModify(SyncRequest) returns(SyncResponse) {}
+
+    rpc processFileDelete(SyncRequest) returns(SyncResponse) {}
+
+    rpc processDirectoryCreate(SyncRequest) returns(SyncResponse) {}
+
+    rpc processDirectoryDelete(SyncRequest) returns(SyncResponse) {}
+
+}
+
+// 定义请求参数
+message SyncRequest {
+    bytes file_path = 1;
+    bytes file_content = 2;
+}
+
+// 定义响应参数
+message SyncResponse {
+    message Result {
+        enum ResultCode {
+            SUCCESS  = 0;
+            ERROR = 1;
+        };
+        ResultCode res_code =1;
+        bytes err_msg = 2;
+    }
+    Result result = 1; // 成功or失败
+}

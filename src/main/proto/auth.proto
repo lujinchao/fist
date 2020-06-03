@@ -1,0 +1,26 @@
+// 申明版本
+syntax = 'proto3';
+
+// 设定一些选项信息
+option java_multiple_files = false;
+option java_outer_classname = "AuthMsg";
+
+package com.baidu.personal.fist.grpc;
+
+//定义服务
+service AuthService {
+
+    rpc authenticate(Credit) returns(Result) {}
+
+}
+
+message Credit {
+    string username = 1;
+    string password = 2;
+}
+
+message Result {
+    bool success = 1;
+    string msg = 2;
+    string token = 3;
+}

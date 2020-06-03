@@ -1,0 +1,21 @@
+fist:
+  server:
+    root: xxxx
+    host: xxxx
+    port: xxxx
+  client:
+    root: xxxx
+    username: xxxx
+    password: xxxx
+  ignores:
+    # 后缀名忽略(比如文件以.iml结尾)
+    suffixList:
+      - .iml
+      - .iws
+      - .ipr
+    # 前缀名忽略(比如文件或文件夹以.开头)
+    prefixList:
+      - .
+    # 名称忽略(比如文件夹或文件名为target)
+    nameList:
+      - target
